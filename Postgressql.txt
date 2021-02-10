@@ -1,0 +1,2419 @@
+//CREATE DATABASE NOKIA PROJECT;
+
+CREATE SCHEMA public;
+SET search_path TO public;
+
+CREATE TABLE EmployeeDetails(
+    Name VARCHAR(50) NOT NULL PRIMARY KEY ,
+    Gender VARCHAR(50) NOT NULL,
+    Company VARCHAR(50) NOT NULL,
+    Email VARCHAR(50) NOT NULL
+);
+
+WITH EmployeeDetails_json (doc) AS (VALUES(
+'[
+      {
+        "name": "Margaret Brewer",
+        "gender": "female",
+        "company": "AFFLUEX",
+        "email": "margaretbrewer@affluex.com"
+      },
+      {
+        "name": "Elvira Hess",
+        "gender": "female",
+        "company": "KEEG",
+        "email": "elvirahess@keeg.com"
+      },
+      {
+        "name": "Jacquelyn Stuart",
+        "gender": "female",
+        "company": "IDEGO",
+        "email": "jacquelynstuart@idego.com"
+      },
+      {
+        "name": "Randall Tillman",
+        "gender": "male",
+        "company": "BLUPLANET",
+        "email": "randalltillman@bluplanet.com"
+      },
+      {
+        "name": "Rene Newton",
+        "gender": "female",
+        "company": "INEAR",
+        "email": "renenewton@inear.com"
+      },
+      {
+        "name": "Maxine Franklin",
+        "gender": "female",
+        "company": "ROTODYNE",
+        "email": "maxinefranklin@rotodyne.com"
+      },
+      {
+        "name": "Rita Benson",
+        "gender": "female",
+        "company": "ACLIMA",
+        "email": "ritabenson@aclima.com"
+      },
+      {
+        "name": "Marisol Burks",
+        "gender": "female",
+        "company": "VISALIA",
+        "email": "marisolburks@visalia.com"
+      },
+      {
+        "name": "Nguyen Cotton",
+        "gender": "male",
+        "company": "UNISURE",
+        "email": "nguyencotton@unisure.com"
+      },
+      {
+        "name": "Walters Horton",
+        "gender": "male",
+        "company": "NETILITY",
+        "email": "waltershorton@netility.com"
+      },
+      {
+        "name": "Head Mcdonald",
+        "gender": "male",
+        "company": "NEPTIDE",
+        "email": "headmcdonald@neptide.com"
+      },
+      {
+        "name": "Leigh Mcfarland",
+        "gender": "female",
+        "company": "MOBILDATA",
+        "email": "leighmcfarland@mobildata.com"
+      },
+      {
+        "name": "Benjamin Melendez",
+        "gender": "male",
+        "company": "COMTOUR",
+        "email": "benjaminmelendez@comtour.com"
+      },
+      {
+        "name": "Freeman Owen",
+        "gender": "male",
+        "company": "GONKLE",
+        "email": "freemanowen@gonkle.com"
+      },
+      {
+        "name": "Higgins Underwood",
+        "gender": "male",
+        "company": "NEBULEAN",
+        "email": "higginsunderwood@nebulean.com"
+      },
+      {
+        "name": "Reyes Ratliff",
+        "gender": "male",
+        "company": "COFINE",
+        "email": "reyesratliff@cofine.com"
+      },
+      {
+        "name": "Etta Kennedy",
+        "gender": "female",
+        "company": "CHILLIUM",
+        "email": "ettakennedy@chillium.com"
+      },
+      {
+        "name": "Hatfield English",
+        "gender": "male",
+        "company": "COWTOWN",
+        "email": "hatfieldenglish@cowtown.com"
+      },
+      {
+        "name": "Cleveland Parsons",
+        "gender": "male",
+        "company": "BOILCAT",
+        "email": "clevelandparsons@boilcat.com"
+      },
+      {
+        "name": "Navarro Moody",
+        "gender": "male",
+        "company": "ARCHITAX",
+        "email": "navarromoody@architax.com"
+      },
+      {
+        "name": "Noel Marshall",
+        "gender": "male",
+        "company": "DENTREX",
+        "email": "noelmarshall@dentrex.com"
+      },
+      {
+        "name": "Watts Morgan",
+        "gender": "male",
+        "company": "MEDIOT",
+        "email": "wattsmorgan@mediot.com"
+      },
+      {
+        "name": "Robles Padilla",
+        "gender": "male",
+        "company": "GEEKUS",
+        "email": "roblespadilla@geekus.com"
+      },
+      {
+        "name": "Foreman Oconnor",
+        "gender": "male",
+        "company": "GEOFORM",
+        "email": "foremanoconnor@geoform.com"
+      },
+      {
+        "name": "Golden Horn",
+        "gender": "male",
+        "company": "NETAGY",
+        "email": "goldenhorn@netagy.com"
+      },
+      {
+        "name": "Gill Guthrie",
+        "gender": "male",
+        "company": "FIREWAX",
+        "email": "gillguthrie@firewax.com"
+      },
+      {
+        "name": "Nadia Spears",
+        "gender": "female",
+        "company": "EZENTIA",
+        "email": "nadiaspears@ezentia.com"
+      },
+      {
+        "name": "Marian Vega",
+        "gender": "female",
+        "company": "STOCKPOST",
+        "email": "marianvega@stockpost.com"
+      },
+      {
+        "name": "Kristen Copeland",
+        "gender": "female",
+        "company": "GLASSTEP",
+        "email": "kristencopeland@glasstep.com"
+      },
+      {
+        "name": "Lakisha Knight",
+        "gender": "female",
+        "company": "NURPLEX",
+        "email": "lakishaknight@nurplex.com"
+      },
+      {
+        "name": "Hamilton Wall",
+        "gender": "male",
+        "company": "ANDERSHUN",
+        "email": "hamiltonwall@andershun.com"
+      },
+      {
+        "name": "Ginger Stark",
+        "gender": "female",
+        "company": "DUOFLEX",
+        "email": "gingerstark@duoflex.com"
+      },
+      {
+        "name": "Bonita Morse",
+        "gender": "female",
+        "company": "GEOFARM",
+        "email": "bonitamorse@geofarm.com"
+      },
+      {
+        "name": "Carlson Dudley",
+        "gender": "male",
+        "company": "ENERFORCE",
+        "email": "carlsondudley@enerforce.com"
+      },
+      {
+        "name": "Dorothy Avery",
+        "gender": "female",
+        "company": "ASSURITY",
+        "email": "dorothyavery@assurity.com"
+      },
+      {
+        "name": "Connie Haney",
+        "gender": "female",
+        "company": "EQUITOX",
+        "email": "conniehaney@equitox.com"
+      },
+      {
+        "name": "John Gilbert",
+        "gender": "female",
+        "company": "LYRICHORD",
+        "email": "johngilbert@lyrichord.com"
+      },
+      {
+        "name": "Cassie Barker",
+        "gender": "female",
+        "company": "GEOFORMA",
+        "email": "cassiebarker@geoforma.com"
+      },
+      {
+        "name": "Rowe Banks",
+        "gender": "male",
+        "company": "PETIGEMS",
+        "email": "rowebanks@petigems.com"
+      },
+      {
+        "name": "Geraldine Villarreal",
+        "gender": "female",
+        "company": "TRIBALOG",
+        "email": "geraldinevillarreal@tribalog.com"
+      },
+      {
+        "name": "Keller Higgins",
+        "gender": "male",
+        "company": "METROZ",
+        "email": "kellerhiggins@metroz.com"
+      },
+      {
+        "name": "Snow Rowe",
+        "gender": "male",
+        "company": "ZILPHUR",
+        "email": "snowrowe@zilphur.com"
+      },
+      {
+        "name": "Hooper Hill",
+        "gender": "male",
+        "company": "BRAINQUIL",
+        "email": "hooperhill@brainquil.com"
+      },
+      {
+        "name": "Christie Compton",
+        "gender": "female",
+        "company": "QUONK",
+        "email": "christiecompton@quonk.com"
+      },
+      {
+        "name": "Darla Dillon",
+        "gender": "female",
+        "company": "ISBOL",
+        "email": "darladillon@isbol.com"
+      },
+      {
+        "name": "Brennan Newman",
+        "gender": "male",
+        "company": "SHADEASE",
+        "email": "brennannewman@shadease.com"
+      },
+      {
+        "name": "Gina Blevins",
+        "gender": "female",
+        "company": "JOVIOLD",
+        "email": "ginablevins@joviold.com"
+      },
+      {
+        "name": "Amanda Ferguson",
+        "gender": "female",
+        "company": "PREMIANT",
+        "email": "amandaferguson@premiant.com"
+      },
+      {
+        "name": "Shelia Ross",
+        "gender": "female",
+        "company": "KIDGREASE",
+        "email": "sheliaross@kidgrease.com"
+      },
+      {
+        "name": "Potts Jimenez",
+        "gender": "male",
+        "company": "EYERIS",
+        "email": "pottsjimenez@eyeris.com"
+      },
+      {
+        "name": "Woodard Burris",
+        "gender": "male",
+        "company": "XPLOR",
+        "email": "woodardburris@xplor.com"
+      },
+      {
+        "name": "Simon Shepherd",
+        "gender": "male",
+        "company": "CALCULA",
+        "email": "simonshepherd@calcula.com"
+      },
+      {
+        "name": "Mccormick Foley",
+        "gender": "male",
+        "company": "TALKALOT",
+        "email": "mccormickfoley@talkalot.com"
+      },
+      {
+        "name": "Cara Puckett",
+        "gender": "female",
+        "company": "SCENTY",
+        "email": "carapuckett@scenty.com"
+      },
+      {
+        "name": "Mccarthy Whitney",
+        "gender": "male",
+        "company": "MOMENTIA",
+        "email": "mccarthywhitney@momentia.com"
+      },
+      {
+        "name": "Caldwell Briggs",
+        "gender": "male",
+        "company": "HOPELI",
+        "email": "caldwellbriggs@hopeli.com"
+      },
+      {
+        "name": "Maude Silva",
+        "gender": "female",
+        "company": "CENTREE",
+        "email": "maudesilva@centree.com"
+      },
+      {
+        "name": "Stanton Lamb",
+        "gender": "male",
+        "company": "AQUOAVO",
+        "email": "stantonlamb@aquoavo.com"
+      },
+      {
+        "name": "Gretchen Wilkinson",
+        "gender": "female",
+        "company": "VALPREAL",
+        "email": "gretchenwilkinson@valpreal.com"
+      },
+      {
+        "name": "Jessica Dennis",
+        "gender": "female",
+        "company": "BITENDREX",
+        "email": "jessicadennis@bitendrex.com"
+      },
+      {
+        "name": "Russell Guy",
+        "gender": "male",
+        "company": "ISOSTREAM",
+        "email": "russellguy@isostream.com"
+      },
+      {
+        "name": "Buckley Hancock",
+        "gender": "male",
+        "company": "HELIXO",
+        "email": "buckleyhancock@helixo.com"
+      },
+      {
+        "name": "Fisher Calderon",
+        "gender": "male",
+        "company": "ZENTILITY",
+        "email": "fishercalderon@zentility.com"
+      },
+      {
+        "name": "Laurie Patterson",
+        "gender": "female",
+        "company": "ISOLOGICA",
+        "email": "lauriepatterson@isologica.com"
+      },
+      {
+        "name": "Hewitt Shaffer",
+        "gender": "male",
+        "company": "EURON",
+        "email": "hewittshaffer@euron.com"
+      },
+      {
+        "name": "Jewell Bradshaw",
+        "gender": "female",
+        "company": "ENTROFLEX",
+        "email": "jewellbradshaw@entroflex.com"
+      },
+      {
+        "name": "Jenny Norris",
+        "gender": "female",
+        "company": "RODEOCEAN",
+        "email": "jennynorris@rodeocean.com"
+      },
+      {
+        "name": "Patricia Carroll",
+        "gender": "female",
+        "company": "NUTRALAB",
+        "email": "patriciacarroll@nutralab.com"
+      },
+      {
+        "name": "Crane Kirby",
+        "gender": "male",
+        "company": "PLASMOS",
+        "email": "cranekirby@plasmos.com"
+      },
+      {
+        "name": "Dalton Bush",
+        "gender": "male",
+        "company": "SONGBIRD",
+        "email": "daltonbush@songbird.com"
+      },
+      {
+        "name": "Madge Singleton",
+        "gender": "female",
+        "company": "NAVIR",
+        "email": "madgesingleton@navir.com"
+      },
+      {
+        "name": "Chelsea Garcia",
+        "gender": "female",
+        "company": "SARASONIC",
+        "email": "chelseagarcia@sarasonic.com"
+      },
+      {
+        "name": "Martina Shepard",
+        "gender": "female",
+        "company": "CORIANDER",
+        "email": "martinashepard@coriander.com"
+      },
+      {
+        "name": "Miles Hartman",
+        "gender": "male",
+        "company": "COSMETEX",
+        "email": "mileshartman@cosmetex.com"
+      },
+      {
+        "name": "Marisa Stein",
+        "gender": "female",
+        "company": "FORTEAN",
+        "email": "marisastein@fortean.com"
+      },
+      {
+        "name": "Stevenson Perez",
+        "gender": "male",
+        "company": "ORBAXTER",
+        "email": "stevensonperez@orbaxter.com"
+      },
+      {
+        "name": "Jacobs Wheeler",
+        "gender": "male",
+        "company": "FUTURITY",
+        "email": "jacobswheeler@futurity.com"
+      },
+      {
+        "name": "Cardenas Rutledge",
+        "gender": "male",
+        "company": "QUILCH",
+        "email": "cardenasrutledge@quilch.com"
+      },
+      {
+        "name": "Dorthy Keller",
+        "gender": "female",
+        "company": "KLUGGER",
+        "email": "dorthykeller@klugger.com"
+      },
+      {
+        "name": "Grant Robbins",
+        "gender": "male",
+        "company": "ROCKLOGIC",
+        "email": "grantrobbins@rocklogic.com"
+      },
+      {
+        "name": "Jean Becker",
+        "gender": "female",
+        "company": "CORMORAN",
+        "email": "jeanbecker@cormoran.com"
+      },
+      {
+        "name": "Virginia Gray",
+        "gender": "female",
+        "company": "MEDIFAX",
+        "email": "virginiagray@medifax.com"
+      },
+      {
+        "name": "Bowers Graham",
+        "gender": "male",
+        "company": "BIOSPAN",
+        "email": "bowersgraham@biospan.com"
+      },
+      {
+        "name": "Constance Thomas",
+        "gender": "female",
+        "company": "GEEKOLOGY",
+        "email": "constancethomas@geekology.com"
+      },
+      {
+        "name": "Grimes Chandler",
+        "gender": "male",
+        "company": "VIOCULAR",
+        "email": "grimeschandler@viocular.com"
+      },
+      {
+        "name": "Colette Mcguire",
+        "gender": "female",
+        "company": "ROBOID",
+        "email": "colettemcguire@roboid.com"
+      },
+      {
+        "name": "Ferguson French",
+        "gender": "male",
+        "company": "PHARMEX",
+        "email": "fergusonfrench@pharmex.com"
+      },
+      {
+        "name": "Parrish Cruz",
+        "gender": "male",
+        "company": "INFOTRIPS",
+        "email": "parrishcruz@infotrips.com"
+      },
+      {
+        "name": "Elizabeth Carr",
+        "gender": "female",
+        "company": "WAAB",
+        "email": "elizabethcarr@waab.com"
+      },
+      {
+        "name": "Ollie Mason",
+        "gender": "female",
+        "company": "GEEKWAGON",
+        "email": "olliemason@geekwagon.com"
+      },
+      {
+        "name": "Oneill Giles",
+        "gender": "male",
+        "company": "VICON",
+        "email": "oneillgiles@vicon.com"
+      },
+      {
+        "name": "Olson Gonzalez",
+        "gender": "male",
+        "company": "TALAE",
+        "email": "olsongonzalez@talae.com"
+      },
+      {
+        "name": "Beard Reyes",
+        "gender": "male",
+        "company": "DEEPENDS",
+        "email": "beardreyes@deepends.com"
+      },
+      {
+        "name": "Barnes Vinson",
+        "gender": "male",
+        "company": "PROSURE",
+        "email": "barnesvinson@prosure.com"
+      },
+      {
+        "name": "Mccoy Wilcox",
+        "gender": "male",
+        "company": "QUINEX",
+        "email": "mccoywilcox@quinex.com"
+      },
+      {
+        "name": "Martha Robertson",
+        "gender": "female",
+        "company": "ZOLAVO",
+        "email": "martharobertson@zolavo.com"
+      },
+      {
+        "name": "Selena Saunders",
+        "gender": "female",
+        "company": "CUBICIDE",
+        "email": "selenasaunders@cubicide.com"
+      },
+      {
+        "name": "Judy Beck",
+        "gender": "female",
+        "company": "XIXAN",
+        "email": "judybeck@xixan.com"
+      },
+      {
+        "name": "Brooke Salazar",
+        "gender": "female",
+        "company": "ZILLADYNE",
+        "email": "brookesalazar@zilladyne.com"
+      },
+      {
+        "name": "Christian Drake",
+        "gender": "male",
+        "company": "ORBIXTAR",
+        "email": "christiandrake@orbixtar.com"
+      },
+      {
+        "name": "Sharron Hewitt",
+        "gender": "female",
+        "company": "KONNECT",
+        "email": "sharronhewitt@konnect.com"
+      },
+      {
+        "name": "Gayle Nguyen",
+        "gender": "female",
+        "company": "ZOUNDS",
+        "email": "gaylenguyen@zounds.com"
+      },
+      {
+        "name": "Susana Kinney",
+        "gender": "female",
+        "company": "XURBAN",
+        "email": "susanakinney@xurban.com"
+      },
+      {
+        "name": "Kristi Sloan",
+        "gender": "female",
+        "company": "EARTHWAX",
+        "email": "kristisloan@earthwax.com"
+      },
+      {
+        "name": "Mcfadden Harrison",
+        "gender": "male",
+        "company": "GALLAXIA",
+        "email": "mcfaddenharrison@gallaxia.com"
+      },
+      {
+        "name": "Flynn Osborn",
+        "gender": "male",
+        "company": "CONFERIA",
+        "email": "flynnosborn@conferia.com"
+      },
+      {
+        "name": "Neal Hubbard",
+        "gender": "male",
+        "company": "ENORMO",
+        "email": "nealhubbard@enormo.com"
+      },
+      {
+        "name": "Melanie Shannon",
+        "gender": "female",
+        "company": "ZILENCIO",
+        "email": "melanieshannon@zilencio.com"
+      },
+      {
+        "name": "Laura Bowman",
+        "gender": "female",
+        "company": "MAXIMIND",
+        "email": "laurabowman@maximind.com"
+      },
+      {
+        "name": "Lana Meadows",
+        "gender": "female",
+        "company": "KOOGLE",
+        "email": "lanameadows@koogle.com"
+      },
+      {
+        "name": "Workman Griffith",
+        "gender": "male",
+        "company": "LYRIA",
+        "email": "workmangriffith@lyria.com"
+      },
+      {
+        "name": "Amber Bond",
+        "gender": "female",
+        "company": "RONBERT",
+        "email": "amberbond@ronbert.com"
+      },
+      {
+        "name": "Mccray Booth",
+        "gender": "male",
+        "company": "AMTAS",
+        "email": "mccraybooth@amtas.com"
+      },
+      {
+        "name": "Huffman Hood",
+        "gender": "male",
+        "company": "ISOPOP",
+        "email": "huffmanhood@isopop.com"
+      },
+      {
+        "name": "Maricela Little",
+        "gender": "female",
+        "company": "DANJA",
+        "email": "maricelalittle@danja.com"
+      },
+      {
+        "name": "Poole Wilkins",
+        "gender": "male",
+        "company": "AQUASURE",
+        "email": "poolewilkins@aquasure.com"
+      },
+      {
+        "name": "Boyer Crawford",
+        "gender": "male",
+        "company": "DEVILTOE",
+        "email": "boyercrawford@deviltoe.com"
+      },
+      {
+        "name": "Ernestine Huber",
+        "gender": "female",
+        "company": "FLEXIGEN",
+        "email": "ernestinehuber@flexigen.com"
+      },
+      {
+        "name": "Erika Larson",
+        "gender": "female",
+        "company": "MAINELAND",
+        "email": "erikalarson@maineland.com"
+      },
+      {
+        "name": "Effie Bolton",
+        "gender": "female",
+        "company": "SUREPLEX",
+        "email": "effiebolton@sureplex.com"
+      },
+      {
+        "name": "Marquita James",
+        "gender": "female",
+        "company": "TWIGGERY",
+        "email": "marquitajames@twiggery.com"
+      },
+      {
+        "name": "Tammi Maldonado",
+        "gender": "female",
+        "company": "POLARAX",
+        "email": "tammimaldonado@polarax.com"
+      },
+      {
+        "name": "Amelia Lynch",
+        "gender": "female",
+        "company": "NIMON",
+        "email": "amelialynch@nimon.com"
+      },
+      {
+        "name": "Johnson Sweeney",
+        "gender": "male",
+        "company": "REVERSUS",
+        "email": "johnsonsweeney@reversus.com"
+      },
+      {
+        "name": "Tanner King",
+        "gender": "male",
+        "company": "ZILLANET",
+        "email": "tannerking@zillanet.com"
+      },
+      {
+        "name": "Sexton Chaney",
+        "gender": "male",
+        "company": "QUOTEZART",
+        "email": "sextonchaney@quotezart.com"
+      },
+      {
+        "name": "Gale Reed",
+        "gender": "female",
+        "company": "COMCUBINE",
+        "email": "galereed@comcubine.com"
+      },
+      {
+        "name": "Cohen Mckenzie",
+        "gender": "male",
+        "company": "MEDCOM",
+        "email": "cohenmckenzie@medcom.com"
+      },
+      {
+        "name": "Mia Graves",
+        "gender": "female",
+        "company": "ZOLARITY",
+        "email": "miagraves@zolarity.com"
+      },
+      {
+        "name": "Whitfield Berger",
+        "gender": "male",
+        "company": "ISOTRONIC",
+        "email": "whitfieldberger@isotronic.com"
+      },
+      {
+        "name": "Rowland Bruce",
+        "gender": "male",
+        "company": "PHOLIO",
+        "email": "rowlandbruce@pholio.com"
+      },
+      {
+        "name": "Wilkins Branch",
+        "gender": "male",
+        "company": "SLOFAST",
+        "email": "wilkinsbranch@slofast.com"
+      },
+      {
+        "name": "Kara Fleming",
+        "gender": "female",
+        "company": "QUILITY",
+        "email": "karafleming@quility.com"
+      },
+      {
+        "name": "Love Dawson",
+        "gender": "male",
+        "company": "NORALEX",
+        "email": "lovedawson@noralex.com"
+      },
+      {
+        "name": "Cunningham Knox",
+        "gender": "male",
+        "company": "OVATION",
+        "email": "cunninghamknox@ovation.com"
+      },
+      {
+        "name": "Trujillo Bright",
+        "gender": "male",
+        "company": "VIAGREAT",
+        "email": "trujillobright@viagreat.com"
+      },
+      {
+        "name": "Vonda Forbes",
+        "gender": "female",
+        "company": "OPPORTECH",
+        "email": "vondaforbes@opportech.com"
+      },
+      {
+        "name": "Diaz Michael",
+        "gender": "male",
+        "company": "EARTHMARK",
+        "email": "diazmichael@earthmark.com"
+      },
+      {
+        "name": "Shawna Myers",
+        "gender": "female",
+        "company": "INTERFIND",
+        "email": "shawnamyers@interfind.com"
+      },
+      {
+        "name": "Colleen Hardin",
+        "gender": "female",
+        "company": "LUMBREX",
+        "email": "colleenhardin@lumbrex.com"
+      },
+      {
+        "name": "Eleanor Nelson",
+        "gender": "female",
+        "company": "PHUEL",
+        "email": "eleanornelson@phuel.com"
+      },
+      {
+        "name": "Rachel Mosley",
+        "gender": "female",
+        "company": "NEUROCELL",
+        "email": "rachelmosley@neurocell.com"
+      },
+      {
+        "name": "Combs Chambers",
+        "gender": "male",
+        "company": "DYMI",
+        "email": "combschambers@dymi.com"
+      },
+      {
+        "name": "Castro Sexton",
+        "gender": "male",
+        "company": "GEEKY",
+        "email": "castrosexton@geeky.com"
+      },
+      {
+        "name": "Burke Woodward",
+        "gender": "male",
+        "company": "ZENTHALL",
+        "email": "burkewoodward@zenthall.com"
+      },
+      {
+        "name": "Chris Webster",
+        "gender": "female",
+        "company": "MUSAPHICS",
+        "email": "chriswebster@musaphics.com"
+      },
+      {
+        "name": "Tyson Rich",
+        "gender": "male",
+        "company": "QUANTASIS",
+        "email": "tysonrich@quantasis.com"
+      },
+      {
+        "name": "Valdez Farmer",
+        "gender": "male",
+        "company": "INTRAWEAR",
+        "email": "valdezfarmer@intrawear.com"
+      },
+      {
+        "name": "Rosalinda Sandoval",
+        "gender": "female",
+        "company": "ZYTRAX",
+        "email": "rosalindasandoval@zytrax.com"
+      },
+      {
+        "name": "Chambers Bartlett",
+        "gender": "male",
+        "company": "SIGNITY",
+        "email": "chambersbartlett@signity.com"
+      },
+      {
+        "name": "Lynette Armstrong",
+        "gender": "female",
+        "company": "TROPOLIS",
+        "email": "lynettearmstrong@tropolis.com"
+      },
+      {
+        "name": "Glover Hahn",
+        "gender": "male",
+        "company": "MAZUDA",
+        "email": "gloverhahn@mazuda.com"
+      },
+      {
+        "name": "Dotson Savage",
+        "gender": "male",
+        "company": "ZENOLUX",
+        "email": "dotsonsavage@zenolux.com"
+      },
+      {
+        "name": "Johnnie Britt",
+        "gender": "female",
+        "company": "QUIZMO",
+        "email": "johnniebritt@quizmo.com"
+      },
+      {
+        "name": "Lucas Bridges",
+        "gender": "male",
+        "company": "BARKARAMA",
+        "email": "lucasbridges@barkarama.com"
+      },
+      {
+        "name": "Anderson Nicholson",
+        "gender": "male",
+        "company": "INTERLOO",
+        "email": "andersonnicholson@interloo.com"
+      },
+      {
+        "name": "Lynda Finch",
+        "gender": "female",
+        "company": "MYOPIUM",
+        "email": "lyndafinch@myopium.com"
+      },
+      {
+        "name": "Aida Price",
+        "gender": "female",
+        "company": "OVERFORK",
+        "email": "aidaprice@overfork.com"
+      },
+      {
+        "name": "Donaldson Manning",
+        "gender": "male",
+        "company": "PAPRIKUT",
+        "email": "donaldsonmanning@paprikut.com"
+      },
+      {
+        "name": "Gordon Mejia",
+        "gender": "male",
+        "company": "PIGZART",
+        "email": "gordonmejia@pigzart.com"
+      },
+      {
+        "name": "Roberson Wilder",
+        "gender": "male",
+        "company": "BRISTO",
+        "email": "robersonwilder@bristo.com"
+      },
+      {
+        "name": "Ochoa Oneil",
+        "gender": "male",
+        "company": "INRT",
+        "email": "ochoaoneil@inrt.com"
+      },
+      {
+        "name": "Hinton Randolph",
+        "gender": "male",
+        "company": "ECLIPSENT",
+        "email": "hintonrandolph@eclipsent.com"
+      },
+      {
+        "name": "Hudson Gonzales",
+        "gender": "male",
+        "company": "EARTHPURE",
+        "email": "hudsongonzales@earthpure.com"
+      },
+      {
+        "name": "Bertie Fitzpatrick",
+        "gender": "female",
+        "company": "KOG",
+        "email": "bertiefitzpatrick@kog.com"
+      },
+      {
+        "name": "Alexandra Santana",
+        "gender": "female",
+        "company": "COSMOSIS",
+        "email": "alexandrasantana@cosmosis.com"
+      },
+      {
+        "name": "Charlotte Reid",
+        "gender": "female",
+        "company": "VORATAK",
+        "email": "charlottereid@voratak.com"
+      },
+      {
+        "name": "Saundra Barnes",
+        "gender": "female",
+        "company": "FUTURIZE",
+        "email": "saundrabarnes@futurize.com"
+      },
+      {
+        "name": "Brigitte Wright",
+        "gender": "female",
+        "company": "QUADEEBO",
+        "email": "brigittewright@quadeebo.com"
+      },
+      {
+        "name": "Rosario Phillips",
+        "gender": "male",
+        "company": "TERASCAPE",
+        "email": "rosariophillips@terascape.com"
+      },
+      {
+        "name": "Lyons Lancaster",
+        "gender": "male",
+        "company": "SNACKTION",
+        "email": "lyonslancaster@snacktion.com"
+      },
+      {
+        "name": "English Carney",
+        "gender": "male",
+        "company": "XUMONK",
+        "email": "englishcarney@xumonk.com"
+      },
+      {
+        "name": "Janell Suarez",
+        "gender": "female",
+        "company": "BLURRYBUS",
+        "email": "janellsuarez@blurrybus.com"
+      },
+      {
+        "name": "Luz Miller",
+        "gender": "female",
+        "company": "IPLAX",
+        "email": "luzmiller@iplax.com"
+      },
+      {
+        "name": "Floyd Wilson",
+        "gender": "male",
+        "company": "EXOSPACE",
+        "email": "floydwilson@exospace.com"
+      },
+      {
+        "name": "Marks Sutton",
+        "gender": "male",
+        "company": "ZILODYNE",
+        "email": "markssutton@zilodyne.com"
+      },
+      {
+        "name": "Aguilar Weaver",
+        "gender": "male",
+        "company": "INQUALA",
+        "email": "aguilarweaver@inquala.com"
+      },
+      {
+        "name": "Davenport Dickson",
+        "gender": "male",
+        "company": "MUSIX",
+        "email": "davenportdickson@musix.com"
+      },
+      {
+        "name": "Reed Schmidt",
+        "gender": "male",
+        "company": "FIBRODYNE",
+        "email": "reedschmidt@fibrodyne.com"
+      },
+      {
+        "name": "Davis Curry",
+        "gender": "male",
+        "company": "KAGGLE",
+        "email": "daviscurry@kaggle.com"
+      },
+      {
+        "name": "Lilly Parks",
+        "gender": "female",
+        "company": "DIGIPRINT",
+        "email": "lillyparks@digiprint.com"
+      },
+      {
+        "name": "Sherri Blake",
+        "gender": "female",
+        "company": "ADORNICA",
+        "email": "sherriblake@adornica.com"
+      },
+      {
+        "name": "Avis Hansen",
+        "gender": "female",
+        "company": "OBONES",
+        "email": "avishansen@obones.com"
+      },
+      {
+        "name": "Wanda Gomez",
+        "gender": "female",
+        "company": "BEDDER",
+        "email": "wandagomez@bedder.com"
+      },
+      {
+        "name": "Nelda Aguirre",
+        "gender": "female",
+        "company": "XELEGYL",
+        "email": "neldaaguirre@xelegyl.com"
+      },
+      {
+        "name": "Bentley Bray",
+        "gender": "male",
+        "company": "GENEKOM",
+        "email": "bentleybray@genekom.com"
+      },
+      {
+        "name": "Hobbs Howe",
+        "gender": "male",
+        "company": "ZAGGLES",
+        "email": "hobbshowe@zaggles.com"
+      },
+      {
+        "name": "Cheri Floyd",
+        "gender": "female",
+        "company": "EXOSTREAM",
+        "email": "cherifloyd@exostream.com"
+      },
+      {
+        "name": "Monica Reeves",
+        "gender": "female",
+        "company": "VISUALIX",
+        "email": "monicareeves@visualix.com"
+      },
+      {
+        "name": "Craig Navarro",
+        "gender": "male",
+        "company": "BALUBA",
+        "email": "craignavarro@baluba.com"
+      },
+      {
+        "name": "Hoffman Thompson",
+        "gender": "male",
+        "company": "XLEEN",
+        "email": "hoffmanthompson@xleen.com"
+      },
+      {
+        "name": "Huff Cohen",
+        "gender": "male",
+        "company": "IMAGINART",
+        "email": "huffcohen@imaginart.com"
+      },
+      {
+        "name": "Robbie Lane",
+        "gender": "female",
+        "company": "SAVVY",
+        "email": "robbielane@savvy.com"
+      },
+      {
+        "name": "Rosemary Pollard",
+        "gender": "female",
+        "company": "ACCUPRINT",
+        "email": "rosemarypollard@accuprint.com"
+      },
+      {
+        "name": "Stevens Lang",
+        "gender": "male",
+        "company": "NETERIA",
+        "email": "stevenslang@neteria.com"
+      },
+      {
+        "name": "Lindsey Delgado",
+        "gender": "female",
+        "company": "ULTRIMAX",
+        "email": "lindseydelgado@ultrimax.com"
+      },
+      {
+        "name": "Lorna Kramer",
+        "gender": "female",
+        "company": "POLARIUM",
+        "email": "lornakramer@polarium.com"
+      },
+      {
+        "name": "Howell Rios",
+        "gender": "male",
+        "company": "DIGIRANG",
+        "email": "howellrios@digirang.com"
+      },
+      {
+        "name": "Reid Hammond",
+        "gender": "male",
+        "company": "GOGOL",
+        "email": "reidhammond@gogol.com"
+      },
+      {
+        "name": "Witt Potter",
+        "gender": "male",
+        "company": "OTHERSIDE",
+        "email": "wittpotter@otherside.com"
+      },
+      {
+        "name": "Taylor Mills",
+        "gender": "male",
+        "company": "ANARCO",
+        "email": "taylormills@anarco.com"
+      },
+      {
+        "name": "Meyer Cross",
+        "gender": "male",
+        "company": "KANGLE",
+        "email": "meyercross@kangle.com"
+      },
+      {
+        "name": "Zamora Pacheco",
+        "gender": "male",
+        "company": "NAMEGEN",
+        "email": "zamorapacheco@namegen.com"
+      },
+      {
+        "name": "Maryann Dorsey",
+        "gender": "female",
+        "company": "LUNCHPAD",
+        "email": "maryanndorsey@lunchpad.com"
+      },
+      {
+        "name": "Mercedes Talley",
+        "gender": "female",
+        "company": "ISOTRACK",
+        "email": "mercedestalley@isotrack.com"
+      },
+      {
+        "name": "Therese Merritt",
+        "gender": "female",
+        "company": "RUGSTARS",
+        "email": "theresemerritt@rugstars.com"
+      },
+      {
+        "name": "Peters Stafford",
+        "gender": "male",
+        "company": "COGNICODE",
+        "email": "petersstafford@cognicode.com"
+      },
+      {
+        "name": "Browning Shelton",
+        "gender": "male",
+        "company": "TERRAGO",
+        "email": "browningshelton@terrago.com"
+      },
+      {
+        "name": "Kirsten Buck",
+        "gender": "female",
+        "company": "OLYMPIX",
+        "email": "kirstenbuck@olympix.com"
+      },
+      {
+        "name": "Romero Mccarty",
+        "gender": "male",
+        "company": "XOGGLE",
+        "email": "romeromccarty@xoggle.com"
+      },
+      {
+        "name": "Deleon Bauer",
+        "gender": "male",
+        "company": "MULTRON",
+        "email": "deleonbauer@multron.com"
+      },
+      {
+        "name": "Lara Welch",
+        "gender": "male",
+        "company": "PORTALINE",
+        "email": "larawelch@portaline.com"
+      },
+      {
+        "name": "Stanley Lowe",
+        "gender": "male",
+        "company": "XYQAG",
+        "email": "stanleylowe@xyqag.com"
+      },
+      {
+        "name": "Molly Faulkner",
+        "gender": "female",
+        "company": "LOTRON",
+        "email": "mollyfaulkner@lotron.com"
+      },
+      {
+        "name": "Sutton Herring",
+        "gender": "male",
+        "company": "ROCKYARD",
+        "email": "suttonherring@rockyard.com"
+      },
+      {
+        "name": "Middleton Ashley",
+        "gender": "male",
+        "company": "THREDZ",
+        "email": "middletonashley@thredz.com"
+      },
+      {
+        "name": "Willie Campbell",
+        "gender": "female",
+        "company": "ZENSOR",
+        "email": "williecampbell@zensor.com"
+      },
+      {
+        "name": "Joseph Tran",
+        "gender": "male",
+        "company": "COLAIRE",
+        "email": "josephtran@colaire.com"
+      },
+      {
+        "name": "Wood Mcneil",
+        "gender": "male",
+        "company": "SONIQUE",
+        "email": "woodmcneil@sonique.com"
+      },
+      {
+        "name": "Marguerite Lewis",
+        "gender": "female",
+        "company": "NORALI",
+        "email": "margueritelewis@norali.com"
+      },
+      {
+        "name": "Jordan Sellers",
+        "gender": "male",
+        "company": "LIMAGE",
+        "email": "jordansellers@limage.com"
+      },
+      {
+        "name": "Pickett Rice",
+        "gender": "male",
+        "company": "COMVEYER",
+        "email": "pickettrice@comveyer.com"
+      },
+      {
+        "name": "Queen Downs",
+        "gender": "female",
+        "company": "PULZE",
+        "email": "queendowns@pulze.com"
+      },
+      {
+        "name": "Byrd Larsen",
+        "gender": "male",
+        "company": "VIRXO",
+        "email": "byrdlarsen@virxo.com"
+      },
+      {
+        "name": "Patel Shaw",
+        "gender": "male",
+        "company": "TEMORAK",
+        "email": "patelshaw@temorak.com"
+      },
+      {
+        "name": "Silvia Cantu",
+        "gender": "female",
+        "company": "SLAX",
+        "email": "silviacantu@slax.com"
+      },
+      {
+        "name": "Kelsey Yang",
+        "gender": "female",
+        "company": "PARCOE",
+        "email": "kelseyyang@parcoe.com"
+      },
+      {
+        "name": "Nancy Merrill",
+        "gender": "female",
+        "company": "INCUBUS",
+        "email": "nancymerrill@incubus.com"
+      },
+      {
+        "name": "Eunice Snow",
+        "gender": "female",
+        "company": "NETUR",
+        "email": "eunicesnow@netur.com"
+      },
+      {
+        "name": "Cline Tate",
+        "gender": "male",
+        "company": "VINCH",
+        "email": "clinetate@vinch.com"
+      },
+      {
+        "name": "Moss Chase",
+        "gender": "male",
+        "company": "PLAYCE",
+        "email": "mosschase@playce.com"
+      },
+      {
+        "name": "Pace Fischer",
+        "gender": "male",
+        "company": "IDEALIS",
+        "email": "pacefischer@idealis.com"
+      },
+      {
+        "name": "Pamela Steele",
+        "gender": "female",
+        "company": "NORSUP",
+        "email": "pamelasteele@norsup.com"
+      },
+      {
+        "name": "Ayers Brady",
+        "gender": "male",
+        "company": "ORBALIX",
+        "email": "ayersbrady@orbalix.com"
+      },
+      {
+        "name": "Monroe Reese",
+        "gender": "male",
+        "company": "UNIA",
+        "email": "monroereese@unia.com"
+      },
+      {
+        "name": "Aileen Battle",
+        "gender": "female",
+        "company": "CAPSCREEN",
+        "email": "aileenbattle@capscreen.com"
+      },
+      {
+        "name": "Kelly Sims",
+        "gender": "female",
+        "company": "ZAGGLE",
+        "email": "kellysims@zaggle.com"
+      },
+      {
+        "name": "Elva Morales",
+        "gender": "female",
+        "company": "ARTIQ",
+        "email": "elvamorales@artiq.com"
+      },
+      {
+        "name": "Catherine Livingston",
+        "gender": "female",
+        "company": "COMTRAK",
+        "email": "catherinelivingston@comtrak.com"
+      },
+      {
+        "name": "Corinne Weber",
+        "gender": "female",
+        "company": "KINDALOO",
+        "email": "corinneweber@kindaloo.com"
+      },
+      {
+        "name": "Hunt Hickman",
+        "gender": "male",
+        "company": "INSURON",
+        "email": "hunthickman@insuron.com"
+      },
+      {
+        "name": "Sims Burt",
+        "gender": "male",
+        "company": "BLEENDOT",
+        "email": "simsburt@bleendot.com"
+      },
+      {
+        "name": "Elvia Petty",
+        "gender": "female",
+        "company": "GEEKETRON",
+        "email": "elviapetty@geeketron.com"
+      },
+      {
+        "name": "Tia Sanford",
+        "gender": "female",
+        "company": "PORTICO",
+        "email": "tiasanford@portico.com"
+      },
+      {
+        "name": "Murphy Mcmillan",
+        "gender": "male",
+        "company": "SKYPLEX",
+        "email": "murphymcmillan@skyplex.com"
+      },
+      {
+        "name": "Figueroa Fields",
+        "gender": "male",
+        "company": "BUZZMAKER",
+        "email": "figueroafields@buzzmaker.com"
+      },
+      {
+        "name": "Roth Stone",
+        "gender": "male",
+        "company": "CEMENTION",
+        "email": "rothstone@cemention.com"
+      },
+      {
+        "name": "Carver Conner",
+        "gender": "male",
+        "company": "ZORK",
+        "email": "carverconner@zork.com"
+      },
+      {
+        "name": "Park Booker",
+        "gender": "male",
+        "company": "ACCEL",
+        "email": "parkbooker@accel.com"
+      },
+      {
+        "name": "Lacy Hicks",
+        "gender": "female",
+        "company": "VERAQ",
+        "email": "lacyhicks@veraq.com"
+      },
+      {
+        "name": "Rodgers Parrish",
+        "gender": "male",
+        "company": "HAWKSTER",
+        "email": "rodgersparrish@hawkster.com"
+      },
+      {
+        "name": "Hardy York",
+        "gender": "male",
+        "company": "ACRUEX",
+        "email": "hardyyork@acruex.com"
+      },
+      {
+        "name": "Sabrina Gordon",
+        "gender": "female",
+        "company": "ECOLIGHT",
+        "email": "sabrinagordon@ecolight.com"
+      },
+      {
+        "name": "Beulah Harris",
+        "gender": "female",
+        "company": "TETRATREX",
+        "email": "beulahharris@tetratrex.com"
+      },
+      {
+        "name": "Helen Schwartz",
+        "gender": "female",
+        "company": "TYPHONICA",
+        "email": "helenschwartz@typhonica.com"
+      },
+      {
+        "name": "Hogan Arnold",
+        "gender": "male",
+        "company": "QUARMONY",
+        "email": "hoganarnold@quarmony.com"
+      },
+      {
+        "name": "Petty Pate",
+        "gender": "male",
+        "company": "CALCU",
+        "email": "pettypate@calcu.com"
+      },
+      {
+        "name": "Paula Spence",
+        "gender": "female",
+        "company": "AQUASSEUR",
+        "email": "paulaspence@aquasseur.com"
+      },
+      {
+        "name": "Blair Castillo",
+        "gender": "male",
+        "company": "FANFARE",
+        "email": "blaircastillo@fanfare.com"
+      },
+      {
+        "name": "Wilkerson Jarvis",
+        "gender": "male",
+        "company": "BULLZONE",
+        "email": "wilkersonjarvis@bullzone.com"
+      },
+      {
+        "name": "Ryan Osborne",
+        "gender": "male",
+        "company": "DELPHIDE",
+        "email": "ryanosborne@delphide.com"
+      },
+      {
+        "name": "Clarke Levine",
+        "gender": "male",
+        "company": "GLUID",
+        "email": "clarkelevine@gluid.com"
+      },
+      {
+        "name": "Lancaster Baxter",
+        "gender": "male",
+        "company": "OMATOM",
+        "email": "lancasterbaxter@omatom.com"
+      },
+      {
+        "name": "Claudia Perkins",
+        "gender": "female",
+        "company": "ANIVET",
+        "email": "claudiaperkins@anivet.com"
+      },
+      {
+        "name": "Mathis Chen",
+        "gender": "male",
+        "company": "GEOSTELE",
+        "email": "mathischen@geostele.com"
+      },
+      {
+        "name": "Jacobson Lindsey",
+        "gender": "male",
+        "company": "ATGEN",
+        "email": "jacobsonlindsey@atgen.com"
+      },
+      {
+        "name": "Holloway Clark",
+        "gender": "male",
+        "company": "CHORIZON",
+        "email": "hollowayclark@chorizon.com"
+      },
+      {
+        "name": "Tessa Hurley",
+        "gender": "female",
+        "company": "FISHLAND",
+        "email": "tessahurley@fishland.com"
+      },
+      {
+        "name": "Kerr Tyler",
+        "gender": "male",
+        "company": "HANDSHAKE",
+        "email": "kerrtyler@handshake.com"
+      },
+      {
+        "name": "Davidson Boyle",
+        "gender": "male",
+        "company": "JUMPSTACK",
+        "email": "davidsonboyle@jumpstack.com"
+      },
+      {
+        "name": "Lambert Boyd",
+        "gender": "male",
+        "company": "MANGELICA",
+        "email": "lambertboyd@mangelica.com"
+      },
+      {
+        "name": "Aurora Sharp",
+        "gender": "female",
+        "company": "AQUACINE",
+        "email": "aurorasharp@aquacine.com"
+      },
+      {
+        "name": "Chaney Campos",
+        "gender": "male",
+        "company": "VENOFLEX",
+        "email": "chaneycampos@venoflex.com"
+      },
+      {
+        "name": "Florine Haley",
+        "gender": "female",
+        "company": "MARTGO",
+        "email": "florinehaley@martgo.com"
+      },
+      {
+        "name": "Irma Mcgowan",
+        "gender": "female",
+        "company": "DECRATEX",
+        "email": "irmamcgowan@decratex.com"
+      },
+      {
+        "name": "Heidi Hamilton",
+        "gender": "female",
+        "company": "OPTICALL",
+        "email": "heidihamilton@opticall.com"
+      },
+      {
+        "name": "Hopper Daniel",
+        "gender": "male",
+        "company": "FREAKIN",
+        "email": "hopperdaniel@freakin.com"
+      },
+      {
+        "name": "Noemi Beach",
+        "gender": "female",
+        "company": "SLAMBDA",
+        "email": "noemibeach@slambda.com"
+      },
+      {
+        "name": "Karyn Goodman",
+        "gender": "female",
+        "company": "GLOBOIL",
+        "email": "karyngoodman@globoil.com"
+      },
+      {
+        "name": "Carolina Rollins",
+        "gender": "female",
+        "company": "BIZMATIC",
+        "email": "carolinarollins@bizmatic.com"
+      },
+      {
+        "name": "Powers Molina",
+        "gender": "male",
+        "company": "MOREGANIC",
+        "email": "powersmolina@moreganic.com"
+      },
+      {
+        "name": "Reba Combs",
+        "gender": "female",
+        "company": "ZILLIDIUM",
+        "email": "rebacombs@zillidium.com"
+      },
+      {
+        "name": "Gibbs Fulton",
+        "gender": "male",
+        "company": "TRASOLA",
+        "email": "gibbsfulton@trasola.com"
+      },
+      {
+        "name": "Julia Wyatt",
+        "gender": "female",
+        "company": "ECLIPTO",
+        "email": "juliawyatt@eclipto.com"
+      },
+      {
+        "name": "Clara Schroeder",
+        "gender": "female",
+        "company": "BUZZWORKS",
+        "email": "claraschroeder@buzzworks.com"
+      },
+      {
+        "name": "Shepherd Gillespie",
+        "gender": "male",
+        "company": "COMTEST",
+        "email": "shepherdgillespie@comtest.com"
+      },
+      {
+        "name": "Evangelina Lester",
+        "gender": "female",
+        "company": "KEGULAR",
+        "email": "evangelinalester@kegular.com"
+      },
+      {
+        "name": "Frankie Hester",
+        "gender": "female",
+        "company": "BRAINCLIP",
+        "email": "frankiehester@brainclip.com"
+      },
+      {
+        "name": "Bright Castaneda",
+        "gender": "male",
+        "company": "ORBIFLEX",
+        "email": "brightcastaneda@orbiflex.com"
+      },
+      {
+        "name": "Buchanan Cobb",
+        "gender": "male",
+        "company": "UXMOX",
+        "email": "buchanancobb@uxmox.com"
+      },
+      {
+        "name": "Vazquez Pickett",
+        "gender": "male",
+        "company": "PURIA",
+        "email": "vazquezpickett@puria.com"
+      },
+      {
+        "name": "Cobb Ayala",
+        "gender": "male",
+        "company": "ELPRO",
+        "email": "cobbayala@elpro.com"
+      },
+      {
+        "name": "Tucker Richards",
+        "gender": "male",
+        "company": "TECHMANIA",
+        "email": "tuckerrichards@techmania.com"
+      },
+      {
+        "name": "Estes Skinner",
+        "gender": "male",
+        "company": "SYBIXTEX",
+        "email": "estesskinner@sybixtex.com"
+      },
+      {
+        "name": "Belinda Dale",
+        "gender": "female",
+        "company": "EXOZENT",
+        "email": "belindadale@exozent.com"
+      },
+      {
+        "name": "Elinor Middleton",
+        "gender": "female",
+        "company": "OPTICOM",
+        "email": "elinormiddleton@opticom.com"
+      },
+      {
+        "name": "Reilly Alston",
+        "gender": "male",
+        "company": "AUTOGRATE",
+        "email": "reillyalston@autograte.com"
+      },
+      {
+        "name": "Madelyn Romero",
+        "gender": "female",
+        "company": "UNEEQ",
+        "email": "madelynromero@uneeq.com"
+      },
+      {
+        "name": "Burnett Mcdowell",
+        "gender": "male",
+        "company": "AMTAP",
+        "email": "burnettmcdowell@amtap.com"
+      },
+      {
+        "name": "Payne Mueller",
+        "gender": "male",
+        "company": "AQUAZURE",
+        "email": "paynemueller@aquazure.com"
+      },
+      {
+        "name": "Webster Glenn",
+        "gender": "male",
+        "company": "BUZZNESS",
+        "email": "websterglenn@buzzness.com"
+      },
+      {
+        "name": "Gross Mitchell",
+        "gender": "male",
+        "company": "KRAGGLE",
+        "email": "grossmitchell@kraggle.com"
+      },
+      {
+        "name": "Lizzie Nieves",
+        "gender": "female",
+        "company": "EARGO",
+        "email": "lizzienieves@eargo.com"
+      },
+      {
+        "name": "Gonzales Sosa",
+        "gender": "male",
+        "company": "BIFLEX",
+        "email": "gonzalessosa@biflex.com"
+      },
+      {
+        "name": "Melisa Fletcher",
+        "gender": "female",
+        "company": "ENTALITY",
+        "email": "melisafletcher@entality.com"
+      },
+      {
+        "name": "Patterson Prince",
+        "gender": "male",
+        "company": "INDEXIA",
+        "email": "pattersonprince@indexia.com"
+      },
+      {
+        "name": "Clay Moran",
+        "gender": "male",
+        "company": "ENDIPIN",
+        "email": "claymoran@endipin.com"
+      },
+      {
+        "name": "Deena Wolfe",
+        "gender": "female",
+        "company": "LEXICONDO",
+        "email": "deenawolfe@lexicondo.com"
+      },
+      {
+        "name": "Britney Curtis",
+        "gender": "female",
+        "company": "TOURMANIA",
+        "email": "britneycurtis@tourmania.com"
+      },
+      {
+        "name": "Lilian Fisher",
+        "gender": "female",
+        "company": "SPHERIX",
+        "email": "lilianfisher@spherix.com"
+      },
+      {
+        "name": "Holder Kent",
+        "gender": "male",
+        "company": "SEALOUD",
+        "email": "holderkent@sealoud.com"
+      },
+      {
+        "name": "Adeline Kaufman",
+        "gender": "female",
+        "company": "CORPULSE",
+        "email": "adelinekaufman@corpulse.com"
+      },
+      {
+        "name": "Montoya Duran",
+        "gender": "male",
+        "company": "KINETICA",
+        "email": "montoyaduran@kinetica.com"
+      },
+      {
+        "name": "Olsen Soto",
+        "gender": "male",
+        "company": "DATACATOR",
+        "email": "olsensoto@datacator.com"
+      },
+      {
+        "name": "Maxwell Guerrero",
+        "gender": "male",
+        "company": "NAMEBOX",
+        "email": "maxwellguerrero@namebox.com"
+      },
+      {
+        "name": "Billie Christian",
+        "gender": "female",
+        "company": "REALMO",
+        "email": "billiechristian@realmo.com"
+      },
+      {
+        "name": "Sullivan Rivera",
+        "gender": "male",
+        "company": "AUTOMON",
+        "email": "sullivanrivera@automon.com"
+      },
+      {
+        "name": "Cole Donaldson",
+        "gender": "male",
+        "company": "COASH",
+        "email": "coledonaldson@coash.com"
+      },
+      {
+        "name": "Ophelia Ramirez",
+        "gender": "female",
+        "company": "DARWINIUM",
+        "email": "opheliaramirez@darwinium.com"
+      },
+      {
+        "name": "Krista Watts",
+        "gender": "female",
+        "company": "ECRATER",
+        "email": "kristawatts@ecrater.com"
+      },
+      {
+        "name": "Lena Vaughn",
+        "gender": "female",
+        "company": "TURNLING",
+        "email": "lenavaughn@turnling.com"
+      },
+      {
+        "name": "Valeria Burns",
+        "gender": "female",
+        "company": "AVENETRO",
+        "email": "valeriaburns@avenetro.com"
+      },
+      {
+        "name": "Cathryn Walls",
+        "gender": "female",
+        "company": "CEPRENE",
+        "email": "cathrynwalls@ceprene.com"
+      },
+      {
+        "name": "Oneal Leonard",
+        "gender": "male",
+        "company": "COREPAN",
+        "email": "onealleonard@corepan.com"
+      },
+      {
+        "name": "Clare Bullock",
+        "gender": "female",
+        "company": "KAGE",
+        "email": "clarebullock@kage.com"
+      },
+      {
+        "name": "Abbott Sullivan",
+        "gender": "male",
+        "company": "ENVIRE",
+        "email": "abbottsullivan@envire.com"
+      },
+      {
+        "name": "Mindy Ball",
+        "gender": "female",
+        "company": "FRANSCENE",
+        "email": "mindyball@franscene.com"
+      },
+      {
+        "name": "Viola Ingram",
+        "gender": "female",
+        "company": "EQUICOM",
+        "email": "violaingram@equicom.com"
+      },
+      {
+        "name": "Dolores Massey",
+        "gender": "female",
+        "company": "KINETICUT",
+        "email": "doloresmassey@kineticut.com"
+      },
+      {
+        "name": "Justice Vazquez",
+        "gender": "male",
+        "company": "INVENTURE",
+        "email": "justicevazquez@inventure.com"
+      },
+      {
+        "name": "Ingram Burnett",
+        "gender": "male",
+        "company": "GRAINSPOT",
+        "email": "ingramburnett@grainspot.com"
+      },
+      {
+        "name": "Erna Foster",
+        "gender": "female",
+        "company": "ENERSOL",
+        "email": "ernafoster@enersol.com"
+      },
+      {
+        "name": "Natalia Chavez",
+        "gender": "female",
+        "company": "WATERBABY",
+        "email": "nataliachavez@waterbaby.com"
+      },
+      {
+        "name": "Dixon Cain",
+        "gender": "male",
+        "company": "IMAGEFLOW",
+        "email": "dixoncain@imageflow.com"
+      },
+      {
+        "name": "Cannon Powell",
+        "gender": "male",
+        "company": "KNOWLYSIS",
+        "email": "cannonpowell@knowlysis.com"
+      },
+      {
+        "name": "Snyder Bradford",
+        "gender": "male",
+        "company": "KEENGEN",
+        "email": "snyderbradford@keengen.com"
+      },
+      {
+        "name": "Houston Frazier",
+        "gender": "male",
+        "company": "EXTRAWEAR",
+        "email": "houstonfrazier@extrawear.com"
+      },
+      {
+        "name": "Brandie Randall",
+        "gender": "female",
+        "company": "SNOWPOKE",
+        "email": "brandierandall@snowpoke.com"
+      },
+      {
+        "name": "Lauren Evans",
+        "gender": "female",
+        "company": "FARMEX",
+        "email": "laurenevans@farmex.com"
+      },
+      {
+        "name": "Rose William",
+        "gender": "female",
+        "company": "DIGITALUS",
+        "email": "rosewilliam@digitalus.com"
+      },
+      {
+        "name": "Myrna Mcfadden",
+        "gender": "female",
+        "company": "ZANITY",
+        "email": "myrnamcfadden@zanity.com"
+      },
+      {
+        "name": "Anita Cortez",
+        "gender": "female",
+        "company": "CORPORANA",
+        "email": "anitacortez@corporana.com"
+      },
+      {
+        "name": "Rosie Mcclain",
+        "gender": "female",
+        "company": "TELEQUIET",
+        "email": "rosiemcclain@telequiet.com"
+      },
+      {
+        "name": "Sherrie Gibson",
+        "gender": "female",
+        "company": "OPTYK",
+        "email": "sherriegibson@optyk.com"
+      },
+      {
+        "name": "Gamble Hayes",
+        "gender": "male",
+        "company": "EZENT",
+        "email": "gamblehayes@ezent.com"
+      },
+      {
+        "name": "Dixie Barlow",
+        "gender": "female",
+        "company": "ZYTRAC",
+        "email": "dixiebarlow@zytrac.com"
+      },
+      {
+        "name": "Zimmerman Brennan",
+        "gender": "male",
+        "company": "NIQUENT",
+        "email": "zimmermanbrennan@niquent.com"
+      },
+      {
+        "name": "Elise West",
+        "gender": "female",
+        "company": "BUNGA",
+        "email": "elisewest@bunga.com"
+      },
+      {
+        "name": "Terry Terry",
+        "gender": "male",
+        "company": "ACCRUEX",
+        "email": "terryterry@accruex.com"
+      },
+      {
+        "name": "Kate Strong",
+        "gender": "female",
+        "company": "SULTRAXIN",
+        "email": "katestrong@sultraxin.com"
+      },
+      {
+        "name": "Michele Mccall",
+        "gender": "female",
+        "company": "MIXERS",
+        "email": "michelemccall@mixers.com"
+      },
+      {
+        "name": "Conrad Ortiz",
+        "gender": "male",
+        "company": "EXTRAGEN",
+        "email": "conradortiz@extragen.com"
+      },
+      {
+        "name": "Brown Roberson",
+        "gender": "male",
+        "company": "BLEEKO",
+        "email": "brownroberson@bleeko.com"
+      },
+      {
+        "name": "Gallegos Clay",
+        "gender": "male",
+        "company": "LINGOAGE",
+        "email": "gallegosclay@lingoage.com"
+      },
+      {
+        "name": "Berry Noel",
+        "gender": "male",
+        "company": "SLUMBERIA",
+        "email": "berrynoel@slumberia.com"
+      },
+      {
+        "name": "Mcknight Adkins",
+        "gender": "male",
+        "company": "EXTRAGENE",
+        "email": "mcknightadkins@extragene.com"
+      },
+      {
+        "name": "Hester Gamble",
+        "gender": "male",
+        "company": "ZILLACTIC",
+        "email": "hestergamble@zillactic.com"
+      },
+      {
+        "name": "Alba Schultz",
+        "gender": "female",
+        "company": "INJOY",
+        "email": "albaschultz@injoy.com"
+      },
+      {
+        "name": "Nash Lawson",
+        "gender": "male",
+        "company": "ZENTURY",
+        "email": "nashlawson@zentury.com"
+      },
+      {
+        "name": "Jeri Hinton",
+        "gender": "female",
+        "company": "PORTICA",
+        "email": "jerihinton@portica.com"
+      },
+      {
+        "name": "Flossie Strickland",
+        "gender": "female",
+        "company": "GADTRON",
+        "email": "flossiestrickland@gadtron.com"
+      },
+      {
+        "name": "Corrine Cox",
+        "gender": "female",
+        "company": "GENMY",
+        "email": "corrinecox@genmy.com"
+      },
+      {
+        "name": "Tania Golden",
+        "gender": "female",
+        "company": "ORONOKO",
+        "email": "taniagolden@oronoko.com"
+      },
+      {
+        "name": "Vaughan Cabrera",
+        "gender": "male",
+        "company": "PEARLESEX",
+        "email": "vaughancabrera@pearlesex.com"
+      },
+      {
+        "name": "Bates Salinas",
+        "gender": "male",
+        "company": "REALYSIS",
+        "email": "batessalinas@realysis.com"
+      },
+      {
+        "name": "April Rosario",
+        "gender": "female",
+        "company": "CRUSTATIA",
+        "email": "aprilrosario@crustatia.com"
+      },
+      {
+        "name": "Naomi Acosta",
+        "gender": "female",
+        "company": "QABOOS",
+        "email": "naomiacosta@qaboos.com"
+      },
+      {
+        "name": "Isabel Holcomb",
+        "gender": "female",
+        "company": "ENDICIL",
+        "email": "isabelholcomb@endicil.com"
+      },
+      {
+        "name": "Morgan Fuentes",
+        "gender": "female",
+        "company": "SPACEWAX",
+        "email": "morganfuentes@spacewax.com"
+      },
+      {
+        "name": "Alisha Ellison",
+        "gender": "female",
+        "company": "PANZENT",
+        "email": "alishaellison@panzent.com"
+      },
+      {
+        "name": "Erma Howell",
+        "gender": "female",
+        "company": "WARETEL",
+        "email": "ermahowell@waretel.com"
+      },
+      {
+        "name": "Holmes Cardenas",
+        "gender": "male",
+        "company": "RENOVIZE",
+        "email": "holmescardenas@renovize.com"
+      },
+      {
+        "name": "Bowman Fernandez",
+        "gender": "male",
+        "company": "EDECINE",
+        "email": "bowmanfernandez@edecine.com"
+      },
+      {
+        "name": "Tisha Hensley",
+        "gender": "female",
+        "company": "PODUNK",
+        "email": "tishahensley@podunk.com"
+      },
+      {
+        "name": "Matthews Horne",
+        "gender": "male",
+        "company": "PYRAMIS",
+        "email": "matthewshorne@pyramis.com"
+      },
+      {
+        "name": "Alvarez Joyner",
+        "gender": "male",
+        "company": "COMVERGES",
+        "email": "alvarezjoyner@comverges.com"
+      },
+      {
+        "name": "Parker Cochran",
+        "gender": "male",
+        "company": "PLASMOX",
+        "email": "parkercochran@plasmox.com"
+      },
+      {
+        "name": "Patti Slater",
+        "gender": "female",
+        "company": "TALKOLA",
+        "email": "pattislater@talkola.com"
+      },
+      {
+        "name": "Clemons Joyce",
+        "gender": "male",
+        "company": "MONDICIL",
+        "email": "clemonsjoyce@mondicil.com"
+      },
+      {
+        "name": "Pruitt Mcleod",
+        "gender": "male",
+        "company": "LUXURIA",
+        "email": "pruittmcleod@luxuria.com"
+      },
+      {
+        "name": "Karen Hampton",
+        "gender": "female",
+        "company": "INSURITY",
+        "email": "karenhampton@insurity.com"
+      },
+      {
+        "name": "Ofelia Trevino",
+        "gender": "female",
+        "company": "DUFLEX",
+        "email": "ofeliatrevino@duflex.com"
+      },
+      {
+        "name": "Wagner Lyons",
+        "gender": "male",
+        "company": "DRAGBOT",
+        "email": "wagnerlyons@dragbot.com"
+      },
+      {
+        "name": "Tabatha Mcconnell",
+        "gender": "female",
+        "company": "ANIMALIA",
+        "email": "tabathamcconnell@animalia.com"
+      },
+      {
+        "name": "Lindsey Anthony",
+        "gender": "male",
+        "company": "STROZEN",
+        "email": "lindseyanthony@strozen.com"
+      },
+      {
+        "name": "Valerie Malone",
+        "gender": "female",
+        "company": "TELEPARK",
+        "email": "valeriemalone@telepark.com"
+      },
+      {
+        "name": "Daniel Duncan",
+        "gender": "male",
+        "company": "ORBIN",
+        "email": "danielduncan@orbin.com"
+      },
+      {
+        "name": "Jones Reilly",
+        "gender": "male",
+        "company": "XINWARE",
+        "email": "jonesreilly@xinware.com"
+      },
+      {
+        "name": "Hopkins Lynn",
+        "gender": "male",
+        "company": "TROPOLI",
+        "email": "hopkinslynn@tropoli.com"
+      },
+      {
+        "name": "Sherry Odom",
+        "gender": "female",
+        "company": "FROLIX",
+        "email": "sherryodom@frolix.com"
+      },
+      {
+        "name": "Elliott Huffman",
+        "gender": "male",
+        "company": "STRALOY",
+        "email": "elliotthuffman@straloy.com"
+      },
+      {
+        "name": "Burton Kane",
+        "gender": "male",
+        "company": "XEREX",
+        "email": "burtonkane@xerex.com"
+      },
+      {
+        "name": "Wilson Ray",
+        "gender": "male",
+        "company": "CENTREGY",
+        "email": "wilsonray@centregy.com"
+      },
+      {
+        "name": "Sue Townsend",
+        "gender": "female",
+        "company": "VORTEXACO",
+        "email": "suetownsend@vortexaco.com"
+      },
+      {
+        "name": "Marion Nunez",
+        "gender": "female",
+        "company": "ZEAM",
+        "email": "marionnunez@zeam.com"
+      },
+      {
+        "name": "Marie Logan",
+        "gender": "female",
+        "company": "EQUITAX",
+        "email": "marielogan@equitax.com"
+      },
+      {
+        "name": "Moran Brown",
+        "gender": "male",
+        "company": "ZEPITOPE",
+        "email": "moranbrown@zepitope.com"
+      },
+      {
+        "name": "Yvette Blankenship",
+        "gender": "female",
+        "company": "OVERPLEX",
+        "email": "yvetteblankenship@overplex.com"
+      },
+      {
+        "name": "Puckett Thornton",
+        "gender": "male",
+        "company": "SATIANCE",
+        "email": "puckettthornton@satiance.com"
+      },
+      {
+        "name": "Dena Garner",
+        "gender": "female",
+        "company": "MARKETOID",
+        "email": "denagarner@marketoid.com"
+      }
+    ]'::json))
+INSERT INTO EmployeeDetails (Name, Gender, Company, Email)
+SELECT p.* FROM EmployeeDetails_json l CROSS JOIN lateral
+json_populate_recordset(NULL::EmployeeDetails, doc) AS p ON conflict (Email)
+do UPDATE SET Name = excluded.Name, Company = excluded.Company;
